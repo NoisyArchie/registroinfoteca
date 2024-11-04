@@ -1,0 +1,73 @@
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
+    url(../images/infoteca.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  button {
+    margin: 1vw;
+    border-radius: 7px;
+    padding: .5vw 1.5vw;
+    font-size: 1.25vw;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: 600;
+    background-color: #6e54fa; 
+    border: none; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #6e54fa, #221314);
+    color: #fff;
+
+}
+
+  .scanner-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    backdrop-filter: blur(10px);
+  }
+
+  #reader {
+    margin-bottom: 20px;
+  }
+
+  .result-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+  }
+
+  .result-container p {
+    font-size: 18px;
+    color: #333;
+  }
+
+  .result-container span {
+    font-weight: bold;
+    color: #6e54fa;
+  }
+
+  @media (max-width: 600px) {
+    button {
+        font-size: 3vw;
+    }
+
+}

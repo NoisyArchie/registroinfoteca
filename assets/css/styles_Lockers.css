@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #fff;
+    --text-color: #221314;
+    --second-color: #5a7184;
+    --main-color: #6e54fa;
+    --big-font: 6rem;
+    --h2-font: 3rem; 
+    --p-font: 1.1rem;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
+    url(../images/infoteca.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+form {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    padding: 200px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 15px;
+    padding: 2vw;
+    max-width: 90%;
+    width: 300px;   
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button {
+    margin: 1vw;
+    border-radius: 7px;
+    padding: .5vw 1.5vw;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: 600;
+    background-color: #6e54fa; 
+    border: none; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #6e54fa, #221314);
+    color: #fff;
+
+}
+
+#result {
+    margin-top: 0px;
+    font-size: 2vw;
+    color: green;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        max-width: 95%;
+    }
+
+    label {
+        font-size: 6vw;
+    }
+
+    button {
+        padding: 1vw 1.5vw;
+        font-size: 4vw;
+        padding: 1vw 2vw;
+    }
+
+    #result {
+        font-size: 6vw;
+    }
+}

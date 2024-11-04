@@ -1,7 +1,7 @@
 <?php
 // conexion.php
 $host = "localhost";
-$dbname = "login_registrer"; 
+$dbname = "registroinfoteca"; 
 $username = "root";
 $password = "";
 
@@ -12,6 +12,6 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 } else {
-  echo "Conexión exitosa a la base de datos";
+    //echo "Conexión exitosa a la base de datos";
 }
 ?>
