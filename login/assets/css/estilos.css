@@ -1,0 +1,378 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
+    url(../images/infoteca.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+main {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.contenedor__todo {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.caja__trasera {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(4, 4, 4, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.caja__trasera div {
+  margin: 100px 40px;
+  color: white;
+  transition: all 500ms;
+}
+
+.caja__trasera div p,
+.caja__trasera button {
+  margin-top: 30px;
+}
+
+.caja__trasera div h3 {
+  font-weight: 400;
+  font-size: 26px;
+  text-align: center;
+}
+
+.caja__trasera div p {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.caja__trasera button {
+  padding: 10px 40px;
+  border: 2px solid #fff;
+  font-size: 14px;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  transition: all 300ms;
+  border-radius: 15px;
+  margin-left: 2.1cm;
+  margin-right: 2.1cm;
+}
+
+.caja__trasera button:hover {
+  background: #fff;
+  color: #6e54fa;
+}
+
+/* Formularios */
+.logo {
+  display: block;
+  margin: 0 auto 10px auto;
+  max-width: 100px;
+  height: auto;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+  background: linear-gradient(to right, #6e54fa, #221314);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.contenedor__login-register {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  top: -185px;
+  left: 0; /* Posición inicial del formulario login */
+  transition: left 500ms ease; /* Agregar transición suave */
+}
+
+
+.contenedor__login-register form {
+  width: 100%;
+  padding: 80px 20px;
+  background: white;
+  position: absolute;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor__login-register form h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6e54fa;
+}
+
+.contenedor__login-register form input {
+  width: 100%;
+  padding: 10px;
+  border: 30px;
+  background: #f2f2f2;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-container {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container i {
+  color: #000000be;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  margin-top: 24px;
+}
+
+.formulario__login {
+  opacity: 1;
+  display: block;
+}
+
+.formulario__register {
+  display: none;
+}
+
+.input-register {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-register i {
+  color: #000000be;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  margin-top: 24px;
+}
+
+/* Campos adicionales */
+#campos_internos_register,
+#campos_externos_register {
+  display: none; /* Ocultar inicialmente */
+}
+
+/* Estilo para input file */
+input[type="file"] {
+  padding: 5px;
+  font-size: 16px;
+  border: 5px solid #ccc;
+  background: #f2f2f2;
+  border-radius: 5px;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 5px 10px;
+  background: linear-gradient(to right, #6e54fa, #221314);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para los campos adicionales (internos y externos) */
+#campos_internos_register input,
+#campos_externos_register input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  font-size: 16px;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Estilo para los botones*/
+.contenedor__login-register form button,
+#btn_interno_register,
+#btn_externo_register,
+button[type="button"] {
+  padding: 10px 40px;
+  margin-top: 30px;
+  border: #560676;
+  border-radius: 7px;
+  font-size: 14px;
+  background: #6e54fa;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  display: block;
+  margin: 10px auto;
+}
+
+.contenedor__login-register form button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #6e54fa, #221314);
+}
+
+.botones-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.botones-container button {
+  margin: 0 10px;
+  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+.botones-container button:hover {
+  transform: translateY(-2px);
+}
+
+
+/*----RESPONSIVIDAD--------*/
+@media (max-width: 700px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      
+      body {
+        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)), url(../images/infoteca.png);
+        background-size: cover;
+        background-position: center;
+      }
+      
+      main {
+        width: 100%;
+        padding: 15px;
+        margin: 100px auto;
+      }
+      
+      .contenedor__todo {
+        max-width: 800px;
+        margin: auto;
+      }
+      
+      .caja__trasera {
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+        background: rgba(4, 4, 4, 0.5);
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      
+      .caja__trasera div {
+        color: white;
+        text-align: center;
+      }
+      
+      .caja__trasera button {
+        padding: 10px 20px;
+        border: 2px solid #fff;
+        background: transparent;
+        color: white;
+        border-radius: 15px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: background 300ms, color 300ms;
+      }
+      
+      .caja__trasera button:hover {
+        background: #fff;
+        color: #6e54fa;
+      }
+      
+      /* Formularios */
+      .logo {
+        display: block;
+        margin: 0 auto 10px;
+        max-width: 100px;
+      }
+      
+      .contenedor__login-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 380px;
+      }
+      
+      .contenedor__login-register form {
+        width: 100%;
+        padding: 40px 20px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .contenedor__login-register form h2 {
+        font-size: 30px;
+        text-align: center;
+        color: #6e54fa;
+      }
+      
+      .contenedor__login-register form input {
+        width: 100%;
+        padding: 10px;
+        background: #f2f2f2;
+        margin-bottom: 10px;
+      }
+      
+      button {
+        padding: 10px 20px;
+        margin: 10px auto;
+        border-radius: 7px;
+        background: #6e54fa;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      
+      button:hover {
+        transform: scale(1.05);
+      }
+      
+      /* Media Queries */
+      @media (max-width: 768px) {
+        main {
+          margin-top: 50px;
+        }
+      
+        .contenedor__login-register {
+          padding: 0 10px;
+        }
+      }
+      
+      
+  }
