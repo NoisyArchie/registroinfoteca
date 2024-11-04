@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <title>Infoteca - Campus Arteaga</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/stylesHome.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
@@ -27,9 +27,21 @@
       <ul class="navbar">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#afluencia">Afluencia</a></li>
-        <li><a href="/eventos/eventos.html">Eventos</a></li>
-        <li><a href="#cubiculos">Cubículos</a></li>
-        <li><a href="/login/prueba.php">Iniciar Sesión</a></li>
+        <li><a href="/registroinfoteca/eventos/eventos.php">Eventos</a></li>
+        <li><a href="/registroinfoteca/cubiculos/cubiculos.php">Cubículos</a></li>
+        <li>
+            <?php
+              session_start();
+              if (isset($_SESSION['usuarioID']) && !empty($_SESSION['usuarioID'])){
+                ?>
+                <a href="/registroinfoteca/login/cerrar_sesion.php">Cerrar Sesión</a></li>
+                <?php
+              }else{
+                ?>
+                <a href="/registroinfoteca/login/login.html">Iniciar Sesión</a></li>
+                <?php 
+              }
+            ?>
       </ul>
     </header>
 
@@ -44,7 +56,7 @@
           Explora la infoteca con servicios modernos y el mejor espacio para
           estudiar y colaborar en el campus.
         </p>
-        <a href="#" class="inicio-btn">Conoce más</a>
+        <a href="/registroinfoteca/qr/escannerQR.php" class="inicio-btn">Registrar asistencia</a>
       </div>
     </section>
 
@@ -59,13 +71,15 @@
 
       <div class="row-items">
         <div class="container-box">
-          <div class="container-img">
-            <img src="iconos/bx-qr-scan.png" alt="Asistencia con QR" />
-          </div>
-          <h4>Asistencia con QR</h4>
-          <p>Más rápido</p>
+            <div class="container-img">
+                <a href="/registroinfoteca/qr/escannerQR.php">
+                    <img src="iconos/bx-qr-scan.png" alt="Asistencia con QR" />
+                </a>
+            </div>
+            <h4>Asistencia con QR</h4>
+            <p>Más rápido</p>
         </div>
-
+        
         <div class="container-box">
           <div class="container-img">
             <img src="iconos/bx-cube.png" alt="Reserva tu cubículo" />
@@ -101,13 +115,13 @@
     <!--Imagenes deslizables-->
     <section class="images">
       <div class="slide">
-        <div class="item" style="background-image: url(assets/foto1.jpg)">
+        <div class="item" style="background-image: url(assets/css/assets/foto1.jpg)">
           <div class="content">
             <div class="name">Eventos</div>
             <div class="des">No te pierdas nuestros increibles eventos.</div>
           </div>
         </div>
-        <div class="item" style="background-image: url(assets/foto2.png)">
+        <div class="item" style="background-image: url(assets/css/assets/foto2.png)">
           <div class="content">
             <div class="name">Salones</div>
             <div class="des">
@@ -115,13 +129,13 @@
             </div>
           </div>
         </div>
-        <div class="item" style="background-image: url(assets/foto3.jpg)">
+        <div class="item" style="background-image: url(assets/css/assets/foto3.jpg)">
           <div class="content">
             <div class="name">Dinamicas</div>
             <div class="des">Asiste a las dinamicas que tenemos para ti.</div>
           </div>
         </div>
-        <div class="item" style="background-image: url(assets/foto4.jpg)">
+        <div class="item" style="background-image: url(assets/css/assets/foto4.jpg)">
           <div class="content">
             <div class="name">Instalaciones</div>
             <div class="des">
@@ -129,13 +143,13 @@
             </div>
           </div>
         </div>
-        <div class="item" style="background-image: url(assets/foto5.jpg)">
+        <div class="item" style="background-image: url(assets/css/assets/foto5.jpg)">
           <div class="content">
             <div class="name">Convivencia</div>
             <div class="des">Aqui no se que poner</div>
           </div>
         </div>
-        <div class="item" style="background-image: url(assets/foto6.jpg)">
+        <div class="item" style="background-image: url(assets/css/assets/foto6.jpg)">
           <div class="content">
             <div class="name">Talleres</div>
             <div class="des">
@@ -161,7 +175,7 @@
       </p>
       <div class="row">
         <div class="testimonial-col">
-          <img src="assets/julian.png" alt="" />
+          <img src="assets/css/assets/julian.png" alt="" />
           <div>
             <p>
               El personal siempre ha sido muy amable conmigo y mis alumnos, los
@@ -179,7 +193,7 @@
         </div>
 
         <div class="testimonial-col">
-          <img src="assets/jesus.png" alt="" />
+          <img src="assets/css/assets/jesus.png" alt="" />
           <div>
             <p>
               Lugar de primer nivel, biblioteca, salas de trabajo, salas
@@ -198,7 +212,7 @@
         </div>
 
         <div class="testimonial-col">
-          <img src="assets/Nikol.png" alt="" />
+          <img src="assets/css/assets/Nikol.png" alt="" />
           <div>
             <p>Me parece un lindo lugar, muy muy tranquilo.</p>
             <h3>Nicole García</h3>
@@ -301,6 +315,6 @@
     </section>
 
     <!--link a JavaScript-->
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="scriptHome.js"></script>
   </body>
 </html>

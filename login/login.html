@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
-    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <link rel="stylesheet" href="/registroinfoteca/assets/css/stylesLogin.css" />
   </head>
   <body>
     <main>
@@ -35,9 +35,9 @@
         <!--Formulario de Login y registro-->
         <div class="contenedor__login-register">
           <!-- Login Form -->
-          <form action="prueba.php" method="POST" class="formulario__login">
+          <form action="login.php" method="POST" class="formulario__login">
             <img
-              src="assets/images/InfotecaCA.png"
+              src="/registroinfoteca/assets/images/InfotecaCA.png"
               alt="Logo Infoteca"
               class="logo"
             />
@@ -84,7 +84,7 @@
 
           <!--Register-->
           <form
-            action="prueba.php"
+            action="login.php"
             method="POST"
             class="formulario__register"
             enctype="multipart/form-data"
@@ -251,101 +251,3 @@
     </script>
   </body>
 </html>
-
-<?php
-//ob_start();
-// Incluye la conexión
-include("php/conexion_be.php");
-
-// Función para validar correos internos
-function validarCorreoInterno($correo) {
-    return strpos($correo, '@uadec.edu.mx') !== false;
-}
-
-// Registro de usuario
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
-    $nombre_completo = $_POST['nombre_completo'];
-    $correo = $_POST['correo'];
-    $usuario = $_POST['usuario'];
-    $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
-    $matricula = !empty($_POST['matricula']) ? $_POST['matricula'] : null;
-    $tipo_usuario = $matricula ? 'interno' : 'externo';
-
-    // Verificar si el usuario o la matrícula ya existen
-    $verificarUsuario = $conn->query("SELECT * FROM usuarios WHERE usuario = '$usuario'");
-    $verificarMatricula = $matricula ? $conn->query("SELECT * FROM usuarios WHERE matricula = '$matricula'") : false;
-
-    if ($verificarUsuario->num_rows > 0) {
-        echo "<script>alert('El usuario ya está registrado');</script>";
-    } elseif ($matricula && $verificarMatricula && $verificarMatricula->num_rows > 0) {
-        echo "<script>alert('La matrícula ya está registrada');</script>";
-    } else {
-        // Procesar credencial si es usuario externo
-        $ruta_credencial = null;
-        if ($tipo_usuario === 'externo') {
-            if (isset($_FILES['credencial']) && $_FILES['credencial']['error'] === 0) {
-                $ruta_destino = 'login\credenciales' . basename($_FILES['credencial']['name']);
-                if (move_uploaded_file($_FILES['credencial']['tmp_name'], $ruta_destino)) {
-                    $ruta_credencial = $ruta_destino;
-                } else {
-                    echo "<script>alert('Error al subir la credencial.');</script>";
-                    exit;
-                }
-            } else {
-                echo "<script>alert('Es obligatorio subir una credencial para usuarios externos.');</script>";
-                exit;
-            }
-        }
-
-        // Insertar en la base de datos
-        $sql = "INSERT INTO usuarios (nombre_completo, correo, usuario, contrasena, matricula, tipo_usuario, credencial) 
-                VALUES ('$nombre_completo', '$correo', '$usuario', '$contrasena', '$matricula', '$tipo_usuario', '$ruta_credencial')";
-        
-        if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('Registro exitoso');</script>";
-            // Redirección para evitar el reenvío del formulario
-           // header("Location: home/pagina_principal.php"); // Cambia `formulario.php` a la URL adecuada de tu página
-            exit;
-        } else {
-            echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
-        }
-    }
-}
-
-
-// Verifica si es una solicitud de inicio de sesión
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-  $usuario = $_POST['usuario'];
-  $correo = $_POST['correo'];
-  $contrasena = $_POST['contrasena'];
-
-  // Verificar en la base de datos
-  $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND correo = '$correo'";
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-      $user = $result->fetch_assoc();
-      
-      // Verificar la contraseña
-      if (password_verify($contrasena, $user['contrasena'])) {
-          // Registrar en la tabla de sesiones activas
-          $usuario_id = $user['id'];
-          $sql_sesion = "INSERT INTO sesiones_activas (usuario_id) VALUES ('$usuario_id')";
-
-          if ($conn->query($sql_sesion) === TRUE) {
-           // echo "<script>alert('Registro exitoso');</script>";
-            //echo "<a href='/resgistroinfoteca/home/pagina_principal.html'>Ir a la página principal</a>";
-            echo "<script>alert('Inicio de sesión exitoso'); window.location.href='/resgistroinfoteca/home/pagina_principal.html';</script>";
-
-            exit; 
-        } else {
-              echo "<script>alert('Error al registrar la sesión.');</script>";
-          }
-      } else {
-          echo "<script>alert('Contraseña incorrecta');</script>";
-      }
-  } else {
-      echo "<script>alert('No existe una cuenta con ese usuario o correo');</script>";
-  }
-}
-?>

@@ -1,20 +1,25 @@
 <?php
-// Conexión a la base de datos
-$conexion = new mysqli("localhost", "root", "", "login_register");
+session_start();
+$conexion = new mysqli("localhost", "root", "", "registroinfoteca");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Actualizar el estado de los casilleros
-$sql_update = "UPDATE casilleros 
+if (!isset($_SESSION['sesionActual']) && empty($_SESSION['sesionActual'])) {
+    header('Location: /registroinfoteca/login/login.html');
+    exit();
+}
+
+// Actualizar el estado de los cubiculos
+$sql_update = "UPDATE cubiculos 
                SET estado = 'Disponible', usuario = NULL,credencial_imagen = NULL, hora_entrada = NULL, hora_salida = NULL, fecha_reservacion = NULL 
                WHERE estado = 'Ocupado' AND hora_salida < CURTIME()";
 
 $conexion->query($sql_update);
 
-// Obtener los casilleros
-$sql_select = "SELECT * FROM casilleros";
+// Obtener los cubiculos
+$sql_select = "SELECT * FROM cubiculos";
 $result = $conexion->query($sql_select);
 ?>
 
@@ -94,19 +99,19 @@ $result = $conexion->query($sql_select);
         <tbody>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo $row['numero_casillero']; ?></td>
+                    <td><?php echo $row['numero_cubiculo']; ?></td>
                     <td><?php echo $row['estado']; ?></td>
                     <td data-hora-salida="<?php echo $row['hora_salida']; ?>">
                         <?php echo $row['hora_salida']; ?>
                     </td>
                     <td>
                         <?php if ($row['estado'] == 'Disponible'): ?>
-                            <a class="reservar" href="reservacion.php?numero_casillero=<?php echo $row['numero_casillero']; ?>">Reservar</a>
+                            <a class="reservar" href="reservacionCubiculos.php?numero_cubiculo=<?php echo $row['numero_cubiculo']; ?>">Reservar</a>
                         <?php else: ?>
                             <span>No disponible</span>
                         <?php endif; ?>
                     </td>
-                    <td><?php echo $row['tipo_casillero']; ?></td>
+                    <td><?php echo $row['tipo_cubiculo']; ?></td>
                 </tr>
             <?php endwhile; ?>
         </tbody>
@@ -116,7 +121,7 @@ $result = $conexion->query($sql_select);
     <button id="activar-sonido" onclick="permitirSonido()">Activar Sonido</button>
 
     <!-- Cargar el sonido de alerta -->
-    <audio id="alerta-sonido" src="alerta.mp3" preload="auto"></audio>
+    <audio id="alerta-sonido" src="assets/cubiculos/alerta.mp3" preload="auto"></audio>
 
     <script>
         let sonidoPermitido = false;
@@ -133,28 +138,28 @@ $result = $conexion->query($sql_select);
             return new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), horas, minutos, segundos || 0);
         }
 
-        // Diccionario para almacenar qué casilleros ya han mostrado la alerta
+        // Diccionario para almacenar qué cubiculos ya han mostrado la alerta
         let alertasMostradas = {};
 
         // Recorremos las filas para buscar la hora de salida
-        function verificarCasilleros() {
+        function verificarcubiculos() {
             document.querySelectorAll('td[data-hora-salida]').forEach(function(td) {
                 const horaSalida = convertirHora(td.getAttribute('data-hora-salida'));
                 const ahora = new Date();
                 const unMinutoAntes = new Date(horaSalida.getTime() - 1 * 60 * 1000); // 1 minuto antes
-                const numeroCasillero = td.parentElement.children[0].innerText;
+                const numeroCubiculo = td.parentElement.children[0].innerText;
 
                 // Si falta 1 minuto para la hora de salida y no se ha mostrado alerta
-                if (ahora >= unMinutoAntes && ahora < horaSalida && sonidoPermitido && !alertasMostradas[numeroCasillero]) {
+                if (ahora >= unMinutoAntes && ahora < horaSalida && sonidoPermitido && !alertasMostradas[numeroCubiculo]) {
                     const audio = document.getElementById('alerta-sonido');
                     audio.play();
-                    alertasMostradas[numeroCasillero] = true; // Marcar que ya se mostró la alerta
+                    alertasMostradas[numeroCubiculo] = true; // Marcar que ya se mostró la alerta
                 }
             });
         }
 
         // Para verificar el estado cada 5 segundos
-        setInterval(verificarCasilleros, 5000); // Cada 10 segundos se revisa la hora de salida
+        setInterval(verificarcubiculos, 5000); // Cada 10 segundos se revisa la hora de salida
     </script>
 </body>
 </html>

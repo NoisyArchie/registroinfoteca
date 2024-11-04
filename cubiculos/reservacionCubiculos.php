@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['numero_casillero'])) {
-    $numero_casillero = $_GET['numero_casillero'];
+if (isset($_GET['numero_cubiculo'])) {
+    $numero_cubiculo = $_GET['numero_cubiculo'];
 } else {
     die("No se ha seleccionado un cubiculo.");
 }
@@ -73,10 +73,10 @@ if (isset($_GET['numero_casillero'])) {
     </style>
 </head>
 <body>
-    <h1>Reservar cubiculo #<?php echo $numero_casillero; ?></h1>
+    <h1>Reservar cubiculo #<?php echo $numero_cubiculo; ?></h1>
     <div class="reservacion-form">
-        <form method="POST" action="reservar.php" enctype="multipart/form-data">
-            <input type="hidden" name="numero_casillero" value="<?php echo $numero_casillero; ?>">
+        <form method="POST" action="reservarCubiculos.php" enctype="multipart/form-data">
+            <input type="hidden" name="numero_cubiculo" value="<?php echo $numero_cubiculo; ?>">
 
             <label for="credencial">Subir Credencial:</label>
             <input type="file" name="credencial" id="credencial" accept="image/*" required>
