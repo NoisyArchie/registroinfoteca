@@ -8,18 +8,18 @@ if (!isset($_SESSION['sesionActual']) && empty($_SESSION['sesionActual'])) {
 }
 
 if (!isset($_SESSION['qrID'])) {
-  $usuario_id = $_SESSION['usuarioID'];
-  $query = "SELECT id FROM qr_adentro WHERE usuario_id = $usuario_id AND salida IS NULL ORDER BY entrada DESC LIMIT 1";
-  $resultado = mysqli_query($conn, $query);
+    $usuario_id = $_SESSION['usuarioID'];
+    $query = "SELECT id FROM qr_adentro WHERE usuario_id = $usuario_id AND salida IS NULL ORDER BY entrada DESC LIMIT 1";
+    $resultado = mysqli_query($conn, $query);
 
-  if ($resultado && mysqli_num_rows($resultado) > 0) {
-      $fila = mysqli_fetch_assoc($resultado);
-      $_SESSION['qrID'] = $fila['id'];
-      echo "QR sin salida encontrada y restaurada con ID: " . $_SESSION['qrID'];
-  } else {
-      echo "No hay registros pendientes de salida para este usuario.";
-      header('Location: /registroinfoteca/qr/escannerQR.php');
-  }
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        $fila = mysqli_fetch_assoc($resultado);
+        $_SESSION['qrID'] = $fila['id'];
+        echo "QR sin salida encontrada y restaurada con ID: " . $_SESSION['qrID'];
+    } else {
+        echo "No hay registros pendientes de salida para este usuario.";
+        header('Location: /registroinfoteca/qr/escannerQR.php');
+    }
 }
 
 $message = "";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // El usuario ya tiene un locker asignado
             $row = $check_result->fetch_assoc();
             $numero_locker = $row['numero_locker'];
-            $message = "Tu locker es el número $numero_locker";
+            $message = "Tu locker es el número: $numero_locker";
         } else {
             // Asignar un nuevo locker al usuario si no tiene uno
             $sql = "SELECT numero_locker FROM lockers WHERE ocupado = 0 ORDER BY numero_locker ASC LIMIT 1";
@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $message = "No se necesita un locker.";
         header('Location: /registroinfoteca/pagina_principal.php');
+        exit();
     }
     $conn->close();
 }
@@ -83,6 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById('buttonSi').style.display = 'none';
             document.getElementById('buttonNo').style.display = 'none';
         }
+
+        function redirectToHome() {
+            setTimeout(function() {
+                alert("Se le redirigirá a la página principal.");
+                window.location.href = "/registroinfoteca/pagina_principal.php";
+            }, 2000); // Espera de 2 segundos antes de redirigir
+        }
     </script>
 </head>
 <body>
@@ -95,7 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <?php if ($message): ?>
-            <div id="result"><?= htmlspecialchars($message) ?></div>
+            <div id="result"><?= $message ?></div>
+            <script>
+                <?php if ($needLocker === 'si'): ?>
+                    redirectToHome();
+                <?php endif; ?>
+            </script>
         <?php endif; ?>
     </div>
 </body>

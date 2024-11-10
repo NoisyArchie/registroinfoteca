@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
         $ruta_credencial = null;
         if ($tipo_usuario === 'externo') {
             if (isset($_FILES['credencial']) && $_FILES['credencial']['error'] === 0) {
-                $ruta_destino = 'login\credenciales' . basename($_FILES['credencial']['name']);
+                $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/registroinfoteca/login/credenciales/' . basename($_FILES['credencial']['name']);
                 if (move_uploaded_file($_FILES['credencial']['tmp_name'], $ruta_destino)) {
                     $ruta_credencial = $ruta_destino;
                 } else {
@@ -47,10 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
                 VALUES ('$nombre_completo', '$correo', '$usuario', '$contrasena', '$matricula', '$tipo_usuario', '$ruta_credencial')";
         
         if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('Registro exitoso');</script>";
-            // Redirección para evitar el reenvío del formulario
-           // header("Location: home/pagina_principal.php"); // Cambia `formulario.php` a la URL adecuada de tu página
-            exit;
+            echo "<script>
+            alert('¡Registro exitoso!. Inicie sesión para acceder a nuestros servicios.');
+            window.location.href = '/RegistroInfoteca/pagina_principal.php'; 
+          </script>";
+           exit;
         } else {
             echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
         }
@@ -87,10 +88,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
               echo "<script>alert('Error al registrar la sesión.');</script>";
           }
       } else {
-          echo "<script>alert('Contraseña incorrecta');</script>";
+          //echo "<script>alert('Contraseña incorrecta');</script>";
+          echo "<script>
+          alert('Contraseña incorrecta. Inténtelo de nuevo');
+          window.location.href = '/RegistroInfoteca/pagina_principal.php'; 
+        </script>";
       }
   } else {
-      echo "<script>alert('No existe una cuenta con ese usuario o correo');</script>";
+     // echo "<script>alert('No existe una cuenta con ese usuario o correo');</script>";
+      echo "<script>
+      alert('No existe una cuenta con ese usuario o correo. Revise e inténtelo de nuevo.');
+      window.location.href = '/RegistroInfoteca/pagina_principal.php'; 
+    </script>";
   }
 }
 

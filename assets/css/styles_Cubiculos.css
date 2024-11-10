@@ -1,0 +1,364 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-color: #fff;
+  --text-color: #221314;
+  --second-color: #5a7184;
+  --main-color: #6e54fa;
+  --big-font: 6rem;
+  --h2-font: 3rem;
+  --p-font: 1.1rem;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+/*Encabezado y barra de navegación, menus*/
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  padding: 30px 18%;
+  transition: ease 0.4s;
+}
+
+.logo {
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--bg-color);
+}
+
+.navbar {
+  display: flex;
+}
+
+.navbar a {
+  color: var(--bg-color);
+  font-size: var(--p-font);
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 4px;
+  transition: ease 0.4s;
+}
+
+.navbar a:hover {
+  background: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+  border-radius: 4px;
+}
+
+#menu-icon {
+  color: var(--bg-color);
+  font-size: 35px;
+  cursor: pointer;
+  display: none;
+}
+header.sticky {
+  background: var(--bg-color);
+  padding: 10px 18%;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.sticky .logo {
+  color: var(--text-color);
+}
+.sticky .navbar a {
+  color: var(--text-color);
+}
+
+section {
+  padding: 50px 8%;
+}
+
+section {
+  padding: 80px 18%;
+}
+
+
+.cubiculos {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(https://vanguardia.com.mx/binrepository/970x648/0c0/0d0/down-right/11604/WBUC/infotecaarteaga2_VG3058281_MG3420189.jpg);
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.cubiculos-text h1 {
+  font-size: var(--big-font);
+  line-height: 1.2;
+  color: var(--bg-color);
+  font-family: "Paytone One", sans-serif;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+.cuerpo-text h2 {
+  font-size: var(--h2-font);
+  line-height: 1.2;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cuerpo-text p {
+  font-size: var(--p-font);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-color);
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+.cuerpo-text h3 {
+  font-size: var(--p-font);
+  font-weight: 525;
+  line-height: 1.2;
+  color: var(--text-color);
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 4px #221314, 0 0 8px #221314;
+  position: relative;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+th {
+  background-color: var(--main-color);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.reservar {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.reservar:hover {
+  background-color: #218838;
+}
+
+/* Botón de activar sonido con ícono */
+#activar-sonido {
+  background-color: var(--main-color);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 46.9%;
+}
+
+#activar-sonido:hover {
+  background-color: #4d3cb1;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::after {
+  content: "Al activar esta alarma, recibirás una notificación 1 minuto antes de que termine tu tiempo en el cubículo, para que puedas prepararte a salir.";
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 280px;
+  font-size: 0.85em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  z-index: 100;
+}
+
+.tooltip:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Para pantallas pequeñas y dispositivos móviles */
+@media (max-width: 412px) {
+  section {
+    padding: 40px 10%;
+  }
+
+  header {
+    padding: 20px 10%;
+  }
+
+  .logo {
+    font-size: 28px;
+    color: var(--bg-color);
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    height: 600px;
+    justify-content: space-between;
+    padding: 60px 0;
+    text-align: center;
+    z-index: 999;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .navbar.active {
+    display: inline-flex;
+  }
+
+  .navbar a {
+    font-size: 30px;
+    color: var(--bg-color);
+    margin: 100px;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  #menu-icon {
+    display: block;
+    color: var(--bg-color);
+    font-size: 35px;
+    cursor: pointer;
+  }
+
+  .cubiculos-text h1 {
+    font-size: 3.5rem; 
+  }
+
+  .cuerpo-text h2 {
+    font-size: 2.5rem; 
+  }
+
+  .cuerpo-text p {
+    font-size: 1.2rem; 
+  }
+
+  
+  table {
+    margin: 0 auto;
+    margin-right: 5px;
+    width: 100%; 
+    border-radius: 6px;
+    box-shadow: 0 0 4px #221314, 0 0 8px #221314;
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 4px 6px; 
+    font-size: 0.6em; 
+  }
+
+  th {
+    background-color: var(--main-color);
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .reservar {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 4px 6px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.6em;
+  }
+
+  .reservar:hover {
+    background-color: #218838;
+  }
+
+  #activar-sonido {
+    margin-left: 45%;
+    font-size: 1.1em;
+    padding: 5px 8px;
+  }
+
+  .tooltip::after {
+    width: 160px; 
+    font-size: 0.7em; 
+  }
+}

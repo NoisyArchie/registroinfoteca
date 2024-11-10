@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .message-container {
             background-color: #ffffff;
             border: 1px solid #ddd;
@@ -24,27 +26,32 @@
             max-width: 400px;
             text-align: center;
         }
+
         .success {
             color: #28a745;
         }
+
         .error {
             color: #dc3545;
         }
+
         .link {
             display: inline-block;
             margin-top: 10px;
             text-decoration: none;
-            color: #007bff;
+            color: #6e54fa;
             font-weight: bold;
         }
+
         .link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="message-container">
-        <?php 
+        <?php
         // Conexión a la base de datos
         $conexion = new mysqli("localhost", "root", "", "registroinfoteca");
 
@@ -74,17 +81,17 @@
                     $sql = "UPDATE cubiculos 
                             SET estado = 'Ocupado', fecha_reservacion = CURDATE(), usuario = '$nombre', credencial_imagen = '$ruta_destino', hora_entrada = '$hora_entrada', hora_salida = '$hora_salida' 
                             WHERE numero_cubiculo = $numero_cubiculo";
-                            
-// Verificación de horario permitido
-$hora_inicio_permitida = "08:00";
-$hora_fin_permitida = "21:00";
 
-// Comprobar que la hora de entrada y salida están dentro del horario permitido
-if ($hora_entrada < $hora_inicio_permitida || $hora_salida > $hora_fin_permitida) {
-    echo "<p class='error'>El servicio de reservación solo está disponible de 8:00 AM a 9:00 PM. Por favor, seleccione una hora dentro de este horario.</p>";
-    echo "<a href='reservacionCubiculos.php?numero_cubiculo=$numero_cubiculo' class='link'>Volver</a>";
-    exit(); // Salir sin guardar la reservación
-}
+                    // Verificación de horario permitido
+                    $hora_inicio_permitida = "08:00";
+                    $hora_fin_permitida = "21:00";
+
+                    // Comprobar que la hora de entrada y salida están dentro del horario permitido
+                    if ($hora_entrada < $hora_inicio_permitida || $hora_salida > $hora_fin_permitida) {
+                        echo "<p class='error'>El servicio de reservación solo está disponible de 8:00 AM a 9:00 PM. Por favor, seleccione una hora dentro de este horario.</p>";
+                        echo "<a href='reservacionCubiculos.php?numero_cubiculo=$numero_cubiculo' class='link'>Volver</a>";
+                        exit(); // Salir sin guardar la reservación
+                    }
 
                     if ($conexion->query($sql) === TRUE) {
                         echo "<p class='success'>Cubículo reservado exitosamente a nombre de $nombre.</p>";
@@ -102,10 +109,10 @@ if ($hora_entrada < $hora_inicio_permitida || $hora_salida > $hora_fin_permitida
             echo "<p class='error'>Faltan datos para la reservación.</p>";
             echo "<a href='cubiculos.php' class='link'>Volver</a>";
         }
-
-        // Cerrar la conexión
+        
         $conexion->close();
         ?>
     </div>
 </body>
+
 </html>

@@ -108,10 +108,9 @@ main {
   max-width: 380px;
   position: relative;
   top: -185px;
-  left: 0; /* Posición inicial del formulario login */
-  transition: left 500ms ease; /* Agregar transición suave */
+  left: 0; 
+  transition: left 500ms ease; 
 }
-
 
 .contenedor__login-register form {
   width: 100%;
@@ -180,7 +179,7 @@ main {
 /* Campos adicionales */
 #campos_internos_register,
 #campos_externos_register {
-  display: none; /* Ocultar inicialmente */
+  display: none; 
 }
 
 /* Estilo para input file */
@@ -256,123 +255,140 @@ button[type="button"] {
   transform: translateY(-2px);
 }
 
-
-/*----RESPONSIVIDAD--------*/
-@media (max-width: 700px) {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      
-      body {
-        background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)), url(../images/infoteca.png);
-        background-size: cover;
-        background-position: center;
-      }
-      
-      main {
-        width: 100%;
-        padding: 15px;
-        margin: 100px auto;
-      }
-      
-      .contenedor__todo {
-        max-width: 800px;
-        margin: auto;
-      }
-      
-      .caja__trasera {
-        padding: 10px 20px;
-        display: flex;
-        justify-content: center;
-        backdrop-filter: blur(5px);
-        background: rgba(4, 4, 4, 0.5);
-        border-radius: 20px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-      
-      .caja__trasera div {
-        color: white;
-        text-align: center;
-      }
-      
-      .caja__trasera button {
-        padding: 10px 20px;
-        border: 2px solid #fff;
-        background: transparent;
-        color: white;
-        border-radius: 15px;
-        margin: 10px 0;
-        cursor: pointer;
-        transition: background 300ms, color 300ms;
-      }
-      
-      .caja__trasera button:hover {
-        background: #fff;
-        color: #6e54fa;
-      }
-      
-      /* Formularios */
-      .logo {
-        display: block;
-        margin: 0 auto 10px;
-        max-width: 100px;
-      }
-      
-      .contenedor__login-register {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 380px;
-      }
-      
-      .contenedor__login-register form {
-        width: 100%;
-        padding: 40px 20px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      
-      .contenedor__login-register form h2 {
-        font-size: 30px;
-        text-align: center;
-        color: #6e54fa;
-      }
-      
-      .contenedor__login-register form input {
-        width: 100%;
-        padding: 10px;
-        background: #f2f2f2;
-        margin-bottom: 10px;
-      }
-      
-      button {
-        padding: 10px 20px;
-        margin: 10px auto;
-        border-radius: 7px;
-        background: #6e54fa;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.3s;
-      }
-      
-      button:hover {
-        transform: scale(1.05);
-      }
-      
-      /* Media Queries */
-      @media (max-width: 768px) {
-        main {
-          margin-top: 50px;
-        }
-      
-        .contenedor__login-register {
-          padding: 0 10px;
-        }
-      }
-      
-      
+@media screen and (max-width: 768px) {
+  body {
+    background-size: cover;
   }
+
+  main {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .contenedor__todo {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+  }
+
+  
+  .caja__trasera {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: none;
+    background-color: none;
+    justify-content: space-between; 
+    border-radius: 20px;
+  }
+
+
+  .caja__trasera div {
+    visibility: hidden; 
+    margin: 10px 40px;
+  }
+
+  .caja__trasera button {
+    visibility: visible; 
+    position: absolute;
+    top: 10%;
+    transform: translateX(-75%);
+    padding: 10px 30px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    background: #6e54fa; 
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border-radius: 15px;
+    z-index: 999; 
+    transition: none;
+  }
+
+  .caja__trasera button:hover {
+    background: #fff;
+    color: #6e54fa;
+  }
+
+  /* Formularios */
+  .logo {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 80px;
+    height: auto;
+    background: linear-gradient(to right, #6e54fa, #221314);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .contenedor__login-register {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    transition: none;
+  }
+
+  .contenedor__login-register form {
+    width: 100%;
+    padding: 40px 20px;
+    background: white;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Inicialmente oculto */
+  }
+
+  .contenedor__login-register .form-active {
+    display: block; 
+  }
+
+  .contenedor__login-register form h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6e54fa;
+  }
+
+  .contenedor__login-register form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .input-container i {
+    font-size: 30px;
+    color: #000000be;
+  }
+
+  .contenedor__login-register form button {
+    padding: 10px 40px;
+    margin-top: 30px;
+    border-radius: 7px;
+    font-size: 14px;
+    background: #6e54fa;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .contenedor__login-register form button:hover {
+    background: linear-gradient(to right, #6e54fa, #221314);
+  }
+}
+
