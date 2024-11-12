@@ -36,7 +36,7 @@ Para ejecutar este proyecto localmente en tu máquina, sigue estos pasos:
    
 5. Accede a la página desde tu navegador usnado la dirección: http://localhost/registroinfoteca (para acceder a la carpeta) o http://localhost/registroinfoteca/pagina_principal.php para acceder al inicio.
    
-6. Crea una base de datos en phpmyadmin e importa el archivo sql que viene incluido en el proyecto, el archivo se llama registroinfoteca.sql
+6. Crea una base de datos en phpmyadmin (http://localhost/phpmyadmin/index.php?route=/) y llamala registroinfoteca, después importa el archivo sql que viene incluido en el proyecto, el archivo se llama registroinfoteca.sql
 
 
 ## Historial de versiones
@@ -50,12 +50,12 @@ Para ejecutar este proyecto localmente en tu máquina, sigue estos pasos:
 ## Contribuidores
 Este proyecto fue desarrollado por un equipo de estudiantes de la Facultad de Sistemas en la materia de Ingeniería de Software impartida por la Dra. Valeria Soto:
 
-- **Diana Marcela Arévalo Sifuentes**: 
-- **Carlo Hiram Fernández Salinas**: 
-- **Oswaldo Castañeda de la Torre**:
-- **Martín Guzmán Peña**: 
-- **Héctor Elí Tavera Guía**: 
-- **Angel de Jesús Sánchez Jaramillo**:
+- **Diana Marcela Arévalo Sifuentes** 
+- **Carlo Hiram Fernández Salinas** 
+- **Oswaldo Castañeda de la Torre**
+- **Martín Guzmán Peña**
+- **Héctor Elí Tavera Guía** 
+- **Angel de Jesús Sánchez Jaramillo**
 
   Para cualquier duda o aclaración dirigirse al siguiente correo: angeljaramillo@uadec.edu.mx
 
