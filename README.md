@@ -40,15 +40,15 @@ Para ejecutar este proyecto localmente en tu máquina, sigue estos pasos:
 
 
 ## Historial de versiones
-v1.4: Sección de afluencia con estadísticas en tiempo real, ajustes de diseño y media queries para dispositivos móviles.
-v1.3: Funcionalidades de registro de asistencia y asignación de lockers.
-v1.2: Agregados eventos y reservación de cubículos, mejoras en el login.
-v1.1: Mejoras generales en la página de inicio y login.
-v1.0: Página principal y sistema de login.
+-v1.4: Sección de afluencia con estadísticas en tiempo real, ajustes de diseño y media queries para dispositivos móviles.
+-v1.3: Funcionalidades de registro de asistencia y asignación de lockers.
+-v1.2: Agregados eventos y reservación de cubículos, mejoras en el login.
+-v1.1: Mejoras generales en la página de inicio y login.
+-v1.0: Página principal y sistema de login.
 
 
 ## Contribuidores
-Este proyecto fue desarrollado por un equipo de estudiantes de la Facultad de Sistemas, UAdeC:
+Este proyecto fue desarrollado por un equipo de estudiantes de la Facultad de Sistemas en la materia de Ingeniería de Software impartida por la Dra. Valeria Soto:
 
 - **Diana Marcela Arévalo Sifuentes**: 
 - **Carlo Hiram Fernández Salinas**: 
