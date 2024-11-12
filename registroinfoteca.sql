@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2024 a las 04:33:43
+-- Tiempo de generación: 05-11-2024 a las 18:21:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,9 +58,9 @@ CREATE TABLE `cubiculos` (
 --
 
 INSERT INTO `cubiculos` (`id`, `numero_cubiculo`, `estado`, `fecha_reservacion`, `usuario`, `hora_entrada`, `hora_salida`, `tipo_cubiculo`, `credencial_imagen`) VALUES
-(1, 1, 'Ocupado', '2024-11-03', 'carlo', '20:18:00', '20:19:00', 'Grande', 'credenciales_cubiculos/qrEntrada.jpeg'),
+(1, 1, 'Ocupado', '2024-11-05', 'carlo', '10:20:00', '10:24:00', 'Grande', 'credenciales_cubiculos/imagen.png'),
 (2, 2, 'Disponible', NULL, NULL, NULL, NULL, 'Mediano', NULL),
-(3, 3, 'Disponible', NULL, NULL, NULL, NULL, 'Chico', 'null'),
+(3, 3, 'Disponible', NULL, NULL, NULL, NULL, 'Chico', NULL),
 (4, 4, 'Disponible', NULL, NULL, NULL, NULL, 'Chico', NULL),
 (5, 5, 'Disponible', NULL, NULL, NULL, NULL, 'Grande', NULL),
 (6, 6, 'Disponible', NULL, NULL, NULL, NULL, 'Mediano', NULL),
@@ -89,7 +89,7 @@ CREATE TABLE `lockers` (
 --
 
 INSERT INTO `lockers` (`id`, `numero_locker`, `ocupado`, `usuario_id`, `fecha_reserva`) VALUES
-(1, 1, 1, 1, '2024-11-03 18:28:06'),
+(1, 1, 0, 0, '0000-00-00 00:00:00'),
 (2, 2, 0, 0, '0000-00-00 00:00:00'),
 (3, 3, 0, 0, '0000-00-00 00:00:00'),
 (4, 4, 0, 0, '0000-00-00 00:00:00'),
@@ -128,7 +128,9 @@ INSERT INTO `qr_adentro` (`id`, `usuario_id`, `entrada`, `salida`) VALUES
 (19, 1, '2024-11-03 17:41:06', '2024-11-03 17:42:31'),
 (20, 1, '2024-11-03 17:42:38', '2024-11-03 17:43:10'),
 (21, 1, '2024-11-03 17:43:48', '2024-11-03 17:44:07'),
-(22, 1, '2024-11-03 18:15:16', NULL);
+(22, 1, '2024-11-03 18:15:16', '2024-11-05 15:45:47'),
+(23, 1, '2024-11-05 16:12:08', '2024-11-05 16:13:28'),
+(24, 1, '2024-11-05 17:12:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,11 @@ INSERT INTO `sesiones_activas` (`id`, `usuario_id`, `inicio_sesion`, `fin_sesion
 (13, 1, '2024-11-04 02:58:10', NULL),
 (14, 1, '2024-11-04 02:58:18', '2024-11-04 02:58:59'),
 (15, 1, '2024-11-04 03:11:49', '2024-11-04 03:15:26'),
-(16, 1, '2024-11-04 03:18:43', NULL);
+(16, 1, '2024-11-04 03:18:43', NULL),
+(17, 1, '2024-11-05 15:43:25', NULL),
+(18, 1, '2024-11-05 15:45:24', '2024-11-05 16:06:22'),
+(19, 1, '2024-11-05 16:11:53', NULL),
+(20, 1, '2024-11-05 17:12:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -235,13 +241,13 @@ ALTER TABLE `lockers`
 -- AUTO_INCREMENT de la tabla `qr_adentro`
 --
 ALTER TABLE `qr_adentro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `sesiones_activas`
 --
 ALTER TABLE `sesiones_activas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

@@ -7,11 +7,12 @@ if (isset($_GET['numero_cubiculo'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">  
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar cubiculo</title>
+    <title>Reservación de cubiculo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,10 +21,12 @@ if (isset($_GET['numero_cubiculo'])) {
             padding: 20px;
             text-align: center;
         }
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+
         .reservacion-form {
             background-color: white;
             border-radius: 10px;
@@ -32,11 +35,13 @@ if (isset($_GET['numero_cubiculo'])) {
             max-width: 400px;
             margin: 0 auto;
         }
+
         label {
             font-size: 1.2em;
             display: block;
             margin-bottom: 10px;
         }
+
         input[type="text"],
         input[type="time"],
         input[type="file"] {
@@ -47,31 +52,36 @@ if (isset($_GET['numero_cubiculo'])) {
             border-radius: 5px;
             margin-bottom: 20px;
         }
+
         button {
             padding: 10px 20px;
             font-size: 1.2em;
-            background-color: #007bff;
+            background-color: #6e54fa;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #423494;
         }
+
         .back-link {
             display: inline-block;
             margin-top: 20px;
             text-decoration: none;
-            color: #007bff;
+            color: #6e54fa;
             font-size: 1.1em;
         }
+
         .back-link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <h1>Reservar cubiculo #<?php echo $numero_cubiculo; ?></h1>
     <div class="reservacion-form">
@@ -93,6 +103,7 @@ if (isset($_GET['numero_cubiculo'])) {
             <button type="submit">Confirmar Reservación</button>
         </form>
     </div>
-    <a class="back-link" href="index.php">Volver a la lista de cubiculo</a>
+    <a class="back-link" href="cubiculos.php">Volver a la lista de cubiculo</a>
 </body>
+
 </html>

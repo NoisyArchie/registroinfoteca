@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login y Register - Infoteca</title>
+    <title>Login - Infoteca</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +14,10 @@
       rel="stylesheet"
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
-    <link rel="stylesheet" href="/registroinfoteca/assets/css/stylesLogin.css" />
+    <link
+      rel="stylesheet"
+      href="/registroinfoteca/assets/css/stylesLogin.css"
+    />
   </head>
   <body>
     <main>
@@ -100,7 +103,6 @@
                   id="register-matricula"
                   name="matricula"
                   placeholder="Matrícula"
-                  
                 />
               </div>
             </div>
@@ -170,7 +172,7 @@
             <div class="botones-container">
               <button type="button" id="btn_interno_register">Interno</button>
               <button type="button" id="btn_externo_register">Externo</button>
-          </div>
+            </div>
 
             <!-- Campo oculto para identificar que es el formulario de registro -->
             <input type="hidden" name="register" value="1" />
@@ -193,20 +195,33 @@
         ".contenedor__login-register"
       );
 
-      // Función para mostrar el formulario de iniciar sesión
-      btnIniciarSesion.addEventListener("click", () => {
-        formularioRegister.style.display = "none";
-        formularioLogin.style.display = "block";
-        contenedorLoginRegister.style.left = "10px";
-      });
+      // Objeto matchMedia
+      const mediaQuery = window.matchMedia("(max-width: 768px)");
 
-      // Función para mostrar el formulario de registro
-      btnRegistrarse.addEventListener("click", () => {
-        formularioLogin.style.display = "none";
-        formularioRegister.style.display = "block";
-        contenedorLoginRegister.style.left = "410px";
-      });
+      // Función para alternar formularios según el ancho de la pantalla
+      function toggleForm(isMobile) {
+        btnIniciarSesion.addEventListener("click", () => {
+          formularioRegister.style.display = "none";
+          formularioLogin.style.display = "block";
+          if (!isMobile) contenedorLoginRegister.style.left = "10px";
+          else contenedorLoginRegister.style.left = "0px";
+        });
 
+        btnRegistrarse.addEventListener("click", () => {
+          formularioLogin.style.display = "none";
+          formularioRegister.style.display = "block";
+          if (!isMobile) contenedorLoginRegister.style.left = "410px";
+          else contenedorLoginRegister.style.left = "0px";
+        });
+      }
+
+      // Llama a la función de alternar según el estado inicial de la media query
+      toggleForm(mediaQuery.matches);
+
+      // Escucha cambios en el estado de la media query
+      mediaQuery.addEventListener("change", (e) => {
+        toggleForm(e.matches);
+      });
       // Para el formulario de login
       const btnInternoLogin = document.getElementById("btn_interno_login");
       const btnExternoLogin = document.getElementById("btn_externo_login");
